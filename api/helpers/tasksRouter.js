@@ -12,6 +12,16 @@ router.get('/', (req,res) => {
         })
 })
 
+router.post('/', (req,res) => {
+    Tasks.add(req.body)
+        .then(task => {
+            res.status(201).json(task)
+        })
+        .catch(error =>{
+            res.status(500).json({message: 'nope'})
+        })
+})
+
 
 module.exports = router;
 
